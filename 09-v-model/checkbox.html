@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--<input type="checkbox" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" value="足球" v-model="hobbies">足球
+    <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+    <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+    <h2>您的爱好是: {{hobbies}}</h2>-->
+
+    <label v-for="item in orihobbis" :for="item">
+        <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+    </label>
+    <h2>您的爱好是: {{hobbies}}</h2>
+    <!--v-model修饰符-->
+    <!--修饰符1.lazy-->
+    <h3>双向绑定失去焦点触发</h3>
+    <input type="text" v-model.lazy="message">
+    <h4>{{message}}</h4>
+    <!--2.number类型-->
+    <input type="text" v-model.number="age">
+    <h4>{{age}}{{typeof age}}</h4>
+    <!--3.trim类型，去除空格-->
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好",
+            hobbies:[],
+            orihobbis:["篮球","足球","乒乓球","羽毛球"],
+            age:0
+        }
+    })
+</script>
+</body>
+</html>

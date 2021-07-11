@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+    <cpn2></cpn2>
+</div>
+<template id="cpn2">
+    <div>
+        <h2>哈哈哈</h2>
+    </div>
+</template>
+<!--为了js中不出现html代码-->
+<script src="../js/vue.js"></script>
+<script>
+    //1.全局组件注册语法糖
+    Vue.component('cpn2',{
+        template: '#cpn2'
+    })
+    //2局部组件注册
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好",
+        }
+
+    })
+</script>
+</body>
+</html>
