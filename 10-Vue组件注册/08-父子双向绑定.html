@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+
+    <cpn2 :cnumber="number" :name="fname" @tofather="accept"></cpn2>
+    <div>父亲改变儿子再改变自己{{fnumber}}</div>
+</div>
+<template id="cpn2">
+    <div>
+
+        <div>接收从父组件来的{{cnumber}}</div>
+        <input type="text" v-model="cnumber1" @input="inputChange($event)">
+
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //1.子组件
+    const cpn2 = {
+        template: '#cpn2',
+        data() {
+            return {
+                cnumber1: this.cnumber
+            }
+        },
+        props: {
+            cnumber: {
+                type: Number
+            },
+            name: {
+                type: String
+            }
+        },
+        watch:{
+            cnumber1(newValue){
+                console.log("cnumber1新值为"+newValue);
+            }
+        },
+        methods: {
+            inputChange(event) {
+                console.log("改变的值为: " + event.currentTarget.value);
+
+                this.$emit('tofather', event)
+            }
+        }
+    }
+    //2.父组件
+    const app = new Vue({
+        el: "#app",
+        data: {
+            number: 3,
+            fnumber: 0,
+            fname:"father"
+        },
+        components: {
+            cpn2
+        },
+        methods: {
+            accept(event) {
+                this.fnumber = event.currentTarget.value;
+                console.log("父亲收到：" + event.currentTarget.value)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

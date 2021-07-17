@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+    <cpn2 :cmovies="movies" :c-info="info"></cpn2>
+</div>
+<template id="cpn2">
+    <div>
+        {{cmovies}}
+        {{cInfo.name}}{{cInfo.age}}
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn2=Vue.extend({
+        template:'#cpn2',
+        props:{
+            cmovies:{
+                type:Array,
+                default:[],
+                required:true
+            },
+            cInfo:{
+                type: Object,
+                default(){
+                    return{}
+                }
+            }
+        },
+        data(){
+            return{
+
+            }
+        }
+    })
+
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好",
+            movies:["火影忍者","海贼王","卢本伟"],
+            info:{
+                age:12,
+                name:"张三"
+            }
+        },
+        components: {
+            cpn2
+        }
+
+    })
+</script>
+</body>
+</html>

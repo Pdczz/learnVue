@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+    <cpn2 @tofather="accept"></cpn2>
+</div>
+<template id="cpn2">
+    <div>
+        <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //1.子组件
+    const cpn2={
+        template:'#cpn2',
+        data(){
+            return{
+                categories:[
+                    {id:"aaa",name:"热门推荐"},
+                    {id:"bbb",name:"家用家电"},
+                    {id:"ccc",name:"电脑办公"}]
+            }
+        },
+        methods:{
+            btnClick(item){
+                console.log(item);
+                this.$emit('tofather',item)
+            }
+        }
+    }
+    //2.父组件
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好",
+            movies:["火影忍者","海贼王","卢本伟"],
+            info:{
+                age:12,
+                name:"张三"
+            },
+            myItem:''
+        },
+        components: {
+            cpn2
+        },
+        methods: {
+            accept(item){
+                this.myItem=item.name;
+                console.log("父亲收到："+this.myItem)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

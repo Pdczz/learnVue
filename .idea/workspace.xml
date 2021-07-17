@@ -14,6 +14,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1tEmvns3q4ZGpzJ3Rmx1dynNrs7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,7 +27,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/vue-admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -59,7 +62,7 @@
       <workItem from="1624069286915" duration="10000" />
       <workItem from="1625881840679" duration="997000" />
       <workItem from="1625887070904" duration="79000" />
-      <workItem from="1625976290012" duration="3169000" />
+      <workItem from="1625976290012" duration="3476000" />
     </task>
     <servers />
   </component>

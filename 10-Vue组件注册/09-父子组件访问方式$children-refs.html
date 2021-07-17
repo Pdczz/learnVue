@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+
+    <cpn2></cpn2>
+    <cpn2 ref="aaa"></cpn2>
+    <cpn2></cpn2>
+    <button @click="btnclick">按钮</button>
+</div>
+<template id="cpn2">
+    <div>
+
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //1.子组件
+    const cpn2 = {
+        template: '#cpn2',
+        data() {
+            return {
+                number: 666
+            }
+        },
+        methods: {
+            showmessage() {
+                console.log(this.number);
+            }
+        }
+    }
+    //2.父组件
+    const app = new Vue({
+        el: "#app",
+        data: {
+            number: 3,
+            fnumber: 0,
+            fname:"father"
+        },
+        components: {
+            cpn2
+        },
+        methods: {
+            btnclick(){
+
+                /*this.$children[0].showmessage();
+                console.log(this.$children[0].number);*/
+                this.$refs.aaa.showmessage();
+                console.log(this.$refs.aaa.number);
+                /*子访问父*/
+                //this.$parent,this.$root
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
