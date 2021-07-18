@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+    <cpn2><span slot="center">标题</span></cpn2>
+
+</div>
+<template id="cpn2">
+    <div>
+        <slot name="left"><span>左边</span></slot>
+        <slot name="center"><span>中间</span></slot>
+        <slot name="right"><span>右边</span></slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //1.子组件
+    const cpn2 = {
+        template: '#cpn2'
+    }
+    //2.父组件
+    const app = new Vue({
+        el: "#app",
+        data: {
+        },
+        components: {
+            cpn2
+        },
+    })
+</script>
+</body>
+</html>

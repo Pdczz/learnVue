@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <!--    <my-cpn></my-cpn>-->
+<!--    <cpn2></cpn2>-->
+    <cpn2>
+        <!--<template slot-scope="slot">
+            <div v-for="item in slot.data">
+                {{item}}==
+            </div>
+        </template>-->
+        <!--有时让插槽内容能够访问子组件中才有的数据是很有用的-->
+        <!--我们选择将包含所有插槽 prop 的对象命名为 slotProps，但你也可以使用任意你喜欢的名字。-->
+        <template v-slot:abc="slotProps">
+            <!--<div v-for="item in abc.list">
+                {{item}}==
+            </div>-->
+            <div>
+                666
+            </div>
+        </template>
+        <template v-slot:other="otherSlotProps">
+            <!--<div v-for="item in otherSlotProps.OtherList">
+                {{item}}==
+            </div>-->
+            <div>
+                777
+            </div>
+        </template>
+    </cpn2>
+
+</div>
+<template id="cpn2">
+    <div>
+        <!--<slot :data="list" >
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+            </ul>
+        </slot>-->
+        <slot :abc="list" >
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+            </ul>
+        </slot>
+        <slot :other="OtherList" >
+            <ul>
+                <li v-for="item in OtherList">{{item}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //1.子组件
+    const cpn2 = {
+        template: '#cpn2',
+        data(){
+            return{
+                list:['java','go','C++','python'],
+                OtherList:['马云','马化腾','王健林','任正非']
+            }
+        }
+    }
+    //2.父组件
+    const app = new Vue({
+        el: "#app",
+        data: {
+        },
+        components: {
+            cpn2
+        },
+    })
+</script>
+</body>
+</html>
